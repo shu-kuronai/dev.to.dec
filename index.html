@@ -5,255 +5,234 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Winter Solstice Celebrations Around the World</title>
     <style>
-        /* Reset some default styling */
-        body, h1, h2, h3, p, ul, li {
+        /* Background for winter theme */
+        body {
             margin: 0;
             padding: 0;
+            height: 100vh;
+            background: linear-gradient(to top, #1e3c72, #2a5298);
+            overflow: hidden;
+            font-family: 'Arial', sans-serif;
         }
 
-        body {
-            font-family: Arial, sans-serif;
-            line-height: 1.6;
-            background-color: #f4f4f4;
-            color: #333;
-            padding-top: 20px;
-            background-image: url('https://www.transparenttextures.com/patterns/asfalt-dark.png'); /* Subtle background texture */
-            background-size: cover;
-        }
-
-        /* Header section */
-        header {
-            background-color: #4CAF50;
-            color: white;
-            text-align: center;
-            padding: 20px;
-            position: relative;
-            z-index: 2;
-        }
-
-        header h1 {
-            font-size: 3rem;
-        }
-
-        /* Navigation bar */
-        nav {
-            text-align: center;
-            margin-top: 10px;
-        }
-
-        nav ul {
-            list-style: none;
-        }
-
-        nav ul li {
-            display: inline;
-            margin: 0 10px;
-        }
-
-        nav ul li a {
-            color: white;
-            text-decoration: none;
-            font-size: 1.1rem;
-        }
-
-        nav ul li a:hover {
-            text-decoration: underline;
-        }
-
-        /* Section styles */
-        section {
-            margin: 20px auto;
-            max-width: 1000px;
-            padding: 20px;
-            background-color: white;
-            border-radius: 8px;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-            margin-bottom: 20px;
-            position: relative;
-            z-index: 2;
-        }
-
-        h2 {
-            font-size: 2rem;
-            color: #4CAF50;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
-        }
-
-        h3 {
-            font-size: 1.5rem;
-            color: #333;
-        }
-
-        p {
-            font-size: 1.1rem;
-            margin-bottom: 15px;
-        }
-
-        /* Winter Solstice CSS Art */
-        .solstice-art {
+        /* Snowflakes falling */
+        .snowflake {
             position: absolute;
-            top: -50px;
-            right: -50px;
-            width: 100px;
-            height: 100px;
-            background-color: #f1c40f;
-            border-radius: 50%;
-            box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.5);
-            animation: sun-move 4s infinite alternate;
+            color: white;
+            font-size: 24px;
+            user-select: none;
+            animation: snow 10s linear infinite;
         }
 
-        @keyframes sun-move {
+        @keyframes snow {
             0% {
-                transform: translateY(0);
+                top: -10px;
+                opacity: 0;
             }
             100% {
-                transform: translateY(30px);
+                top: 100%;
+                opacity: 1;
             }
         }
 
-        /* List styling */
-        ul {
-            padding-left: 20px;
+        /* Snowman styles */
+        .snowman {
+            position: absolute;
+            bottom: 50px;
+            left: 50%;
+            transform: translateX(-50%);
         }
 
-        li {
-            margin-bottom: 10px;
+        .snowman .body {
+            width: 100px;
+            height: 100px;
+            background-color: white;
+            border-radius: 50%;
+            border: 5px solid #ccc;
+            position: absolute;
+            bottom: 0;
         }
 
-        /* Footer section */
-        footer {
-            background-color: #333;
+        .snowman .middle {
+            width: 80px;
+            height: 80px;
+            background-color: white;
+            border-radius: 50%;
+            border: 5px solid #ccc;
+            position: absolute;
+            bottom: 80px;
+            left: 10px;
+        }
+
+        .snowman .head {
+            width: 60px;
+            height: 60px;
+            background-color: white;
+            border-radius: 50%;
+            border: 5px solid #ccc;
+            position: absolute;
+            bottom: 160px;
+            left: 20px;
+        }
+
+        /* Snowman details */
+        .snowman .scarf {
+            position: absolute;
+            width: 100px;
+            height: 20px;
+            background-color: red;
+            top: 20px;
+            left: 10px;
+        }
+
+        .snowman .hat {
+            width: 70px;
+            height: 20px;
+            background-color: black;
+            position: absolute;
+            top: -10px;
+            left: 15px;
+        }
+
+        /* Button to generate snowflakes */
+        .button {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            padding: 10px 20px;
+            background-color: #2a5298;
             color: white;
-            text-align: center;
-            padding: 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
         }
 
-        footer nav ul {
-            list-style: none;
-        }
-
-        footer nav ul li {
-            display: inline;
-            margin: 0 10px;
-        }
-
-        footer nav ul li a {
-            color: white;
-            text-decoration: none;
-        }
-
-        footer nav ul li a:hover {
-            text-decoration: underline;
-        }
-
-        /* Mobile responsiveness */
-        @media (max-width: 768px) {
-            header h1 {
-                font-size: 2rem;
-            }
-
-            nav ul li {
-                display: block;
-                margin: 10px 0;
-            }
-
-            section {
-                padding: 15px;
-            }
-
-            h2 {
-                font-size: 1.6rem;
-            }
-
-            .solstice-art {
-                width: 50px;
-                height: 50px;
-                top: -30px;
-                right: -30px;
-            }
+        .button:hover {
+            background-color: #1e3c72;
         }
     </style>
 </head>
 <body>
 
-    <header>
-        <h1>Winter Solstice Celebrations Around the World</h1>
-        <nav>
+    <header id="main-header">
+        <h1>Celebrating the Winter Solstice</h1>
+        <nav id="main-nav">
             <ul>
-                <li><a href="#intro">Introduction</a></li>
+                <li><a href="#introduction">Introduction</a></li>
                 <li><a href="#science">The Science</a></li>
-                <li><a href="#hemispheres">Hemispheres</a></li>
+                <li><a href="#hemispheres">Solstice Across Hemispheres</a></li>
                 <li><a href="#celebrations">Global Celebrations</a></li>
-                <li><a href="#traditions">Traditions</a></li>
+                <li><a href="#traditions">Solstice Traditions</a></li>
                 <li><a href="#conclusion">Conclusion</a></li>
             </ul>
         </nav>
-        <div class="solstice-art"></div> <!-- Sun CSS Art -->
     </header>
 
-    <section id="intro">
+    <section id="introduction">
         <h2>Introduction to the Winter Solstice</h2>
-        <p>The winter solstice is the shortest day and the longest night of the year. It occurs when one hemisphere is tilted farthest from the Sun, resulting in the least amount of sunlight. This marks the beginning of winter in the Northern Hemisphere and summer in the Southern Hemisphere.</p>
+        <p>The winter solstice is a significant astronomical event that marks the shortest day and the longest night of the year. It occurs annually in December in the Northern Hemisphere and in June in the Southern Hemisphere. This event has been observed and celebrated by cultures around the world for thousands of years, often symbolizing rebirth, reflection, and the triumph of light over darkness.</p>
     </section>
 
     <section id="science">
-        <h2>The Science Behind the Winter Solstice</h2>
-        <p>The solstice occurs due to the tilt of the Earth’s axis at 23.5 degrees. When one hemisphere is tilted toward the Sun, it experiences summer, and when tilted away, it experiences winter. The solstice happens at the exact moment the Sun appears at its lowest elevation in the sky.</p>
+        <h2>The Science Behind the Solstice</h2>
+        <p>The solstices occur due to the Earth's axial tilt of approximately 23.5 degrees relative to its orbital plane around the Sun. This tilt causes different parts of the Earth to receive varying amounts of sunlight throughout the year, leading to the changing seasons. During the winter solstice, one hemisphere is tilted the farthest away from the Sun, resulting in the shortest period of daylight.</p>
+        <p>At the exact moment of the solstice, the Sun reaches its lowest maximum elevation in the sky. In the Northern Hemisphere, this happens around December 21st or 22nd, when the Sun is directly over the Tropic of Capricorn at 23.5 degrees south latitude. In the Southern Hemisphere, the winter solstice occurs around June 20th or 21st, when the Sun is over the Tropic of Cancer at 23.5 degrees north latitude.</p>
+        <p>The solstice is a precise moment in time, but its effects are felt throughout the day. The term "solstice" comes from the Latin words "sol" (sun) and "sistere" (to stand still), because the Sun's apparent movement north or south comes to a stop before reversing direction.</p>
     </section>
 
     <section id="hemispheres">
-        <h2>Winter Solstice Across Hemispheres</h2>
-        <h3>Northern Hemisphere</h3>
-        <p>In the Northern Hemisphere, the winter solstice marks the first day of winter, occurring around December 21st. The day is shorter, and nights are longer, with cold weather prevalent in many regions.</p>
-        
-        <h3>Southern Hemisphere</h3>
-        <p>In the Southern Hemisphere, the solstice marks the beginning of summer, with longer daylight hours and warmer weather, occurring around June 21st.</p>
+        <h2>Solstice Across Hemispheres</h2>
+        <p>The experience of the solstice differs greatly between the Northern and Southern Hemispheres due to their opposite seasons.</p>
+        <article class="hemisphere" id="northern-hemisphere">
+            <h3>Northern Hemisphere</h3>
+            <p>In the Northern Hemisphere, the December solstice marks the beginning of winter. Countries like the United States, Canada, Russia, and much of Europe experience their shortest day and longest night. The weather typically becomes colder, and many cultures have developed traditions to bring light and warmth into this dark time of year.</p>
+        </article>
+        <article class="hemisphere" id="southern-hemisphere">
+            <h3>Southern Hemisphere</h3>
+            <p>Conversely, in the Southern Hemisphere, the December solstice signals the start of summer. Nations such as Australia, South Africa, and Argentina enjoy their longest day and shortest night. This time is associated with warmth, outdoor activities, and often, summer vacations.</p>
+        </article>
+        <p>This opposite experience of the solstice underscores the diversity of cultural responses to the same astronomical event, influenced by local climate and historical traditions.</p>
     </section>
 
     <section id="celebrations">
         <h2>Global Celebrations of the Winter Solstice</h2>
-        <h3>Newgrange - Ireland</h3>
-        <p>Newgrange is an ancient site aligned with the winter solstice sunrise. People celebrate this event, where sunlight shines through a passage to illuminate the inner chamber, symbolizing rebirth.</p>
-        
-        <h3>Inti Raymi - Peru</h3>
-        <p>The Inca Festival of the Sun, Inti Raymi, is celebrated during the June solstice, marking the beginning of the Andean winter. It includes elaborate rituals and dances in honor of the Sun god Inti.</p>
-        
-        <h3>Modranicht - Anglo-Saxon Tradition</h3>
-        <p>Modranicht, or "Mother's Night," was an Anglo-Saxon tradition held on the eve of the winter solstice. It involved honoring mothers, female deities, and the Sun, symbolizing the return of light.</p>
-        
-        <h3>Koliada - Eastern Europe</h3>
-        <p>Koliada is a Slavic festival celebrating the solstice with carol singing, feasting, and lighting fires to bring warmth during the dark winter months.</p>
+        <article class="celebration" id="newgrange">
+            <h3>Newgrange - Ireland</h3>
+            <p>The prehistoric monument of Newgrange is aligned with the rising sun on the winter solstice. Built over 5,000 years ago, it predates Stonehenge and the Egyptian pyramids. Each year, a beam of sunlight illuminates the inner chamber, symbolizing the victory of light over darkness.</p>
+        </article>
+        <article class="celebration" id="intiraymi">
+            <h3>Inti Raymi - Peru</h3>
+            <p>Although traditionally held during the June solstice, which is the winter solstice in the Southern Hemisphere, Inti Raymi is an ancient Incan festival honoring the Sun god Inti. The celebration includes music, dancing, and sacrifices, reflecting the importance of the Sun in agricultural societies.</p>
+        </article>
+        <article class="celebration" id="modranicht">
+            <h3>Modranicht - Anglo-Saxon Tradition</h3>
+            <p>Meaning "Mother's Night," Modranicht was observed by the Anglo-Saxons on the eve of the winter solstice. It was a time to honor female deities and ancestral mothers, symbolizing fertility and the rebirth of the Sun.</p>
+        </article>
+        <article class="celebration" id="koliada">
+            <h3>Koliada - Eastern Europe</h3>
+            <p>Koliada is a Slavic festival celebrated during the winter solstice. Traditions include singing carols, feasting, and lighting fires to symbolize the return of the Sun. The festival has influenced modern Christmas and New Year traditions in the region.</p>
+        </article>
     </section>
 
     <section id="traditions">
-        <h2>Common Winter Solstice Traditions</h2>
+        <h2>Common Solstice Traditions</h2>
         <ul>
-            <li><strong>Bonfires:</strong> Lighting bonfires or candles to symbolize the return of the Sun.</li>
-            <li><strong>Feasts:</strong> Families and communities come together to share food and celebrate.</li>
-            <li><strong>Gift-Giving:</strong> Exchanging gifts is a way of sharing warmth and love.</li>
-            <li><strong>Decorating with Evergreens:</strong> Holly, mistletoe, and other evergreens symbolize life and protection against evil spirits.</li>
-            <li><strong>Reflection and Renewal:</strong> The solstice is a time for personal reflection, setting goals, and new beginnings.</li>
+            <li><strong>Bonfires and Candles:</strong> Lighting fires and candles is a widespread tradition to represent light overcoming darkness.</li>
+            <li><strong>Feasting:</strong> Communities gather to share meals, strengthening social bonds during the cold months.</li>
+            <li><strong>Gift-Giving:</strong> Exchanging gifts symbolizes goodwill and sharing abundance.</li>
+            <li><strong>Decorating with Evergreens:</strong> Using evergreen plants like holly and mistletoe represents eternal life and protection.</li>
+            <li><strong>Reflection and Renewal:</strong> The solstice is a time for introspection, setting intentions for the coming year.</li>
         </ul>
     </section>
 
     <section id="conclusion">
         <h2>Conclusion</h2>
-        <p>The winter solstice has been an important event in many cultures worldwide. Whether as a time of reflection, celebration, or spiritual significance, the solstice offers a powerful reminder of the cyclical nature of life and the power of light to overcome darkness.</p>
+        <p>The winter solstice is a profound event that connects humanity across time and space. Despite differences in culture and climate, people around the world share common themes in their celebrations—hope, renewal, and the enduring human spirit. Understanding the science behind the solstice enhances our appreciation of these traditions and highlights our connection to the cosmos.</p>
     </section>
 
-    <footer>
+    <footer id="main-footer">
         <p>&copy; 2024 Winter Solstice Celebrations</p>
-        <nav>
+        <nav id="footer-nav">
             <ul>
-                <li><a href="#intro">Introduction</a></li>
-                <li><a href="#science">Science</a></li>
-                <li><a href="#hemispheres">Hemispheres</a></li>
-                <li><a href="#celebrations">Celebrations</a></li>
-                <li><a href="#traditions">Traditions</a></li>
-                <li><a href="#conclusion">Conclusion</a></li>
+                <li><a href="#main-header">Back to Top</a></li>
+                <li><a href="#contact">Contact Us</a></li>
             </ul>
         </nav>
     </footer>
 
+    <!-- Snowflakes -->
+    <div id="snowflakes"></div>
+
+    <!-- Snowman -->
+    <div class="snowman">
+        <div class="body"></div>
+        <div class="middle"></div>
+        <div class="head"></div>
+        <div class="scarf"></div>
+        <div class="hat"></div>
+    </div>
+
+    <!-- Button to generate snowflakes -->
+    <button class="button" onclick="createSnowflakes()">Create Snowflakes</button>
+
+    <script>
+        // Function to generate snowflakes
+        function createSnowflakes() {
+            const snowflakes = document.getElementById('snowflakes');
+
+            // Create a random number of snowflakes
+            for (let i = 0; i < 50; i++) {
+                const snowflake = document.createElement('div');
+                snowflake.classList.add('snowflake');
+                snowflake.textContent = '*';
+                snowflake.style.fontSize = `${Math.random() * 10 + 15}px`; // Random size
+                snowflake.style.left = `${Math.random() * window.innerWidth}px`; // Random position
+                snowflake.style.animationDuration = `${Math.random() * 3 + 7}s`; // Random speed
+
+                snowflakes.appendChild(snowflake);
+            }
+        }
+    </script>
 </body>
 </html>
+
